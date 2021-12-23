@@ -51,4 +51,25 @@ roteador.get('/:idTask', async (req, res) =>{
     }
 })
 
+roteador.put('/:idTask', async (req,res) => {
+
+    try{
+        const id = req.params.idTask;
+    const dadosRecebidos = req.body;
+    const dados = Object.assign({}, dadosRecebidos, {id: id})
+    const task = new TaskConst(dados)
+    await task.atualizar()
+    res.status(204)
+    res.end()
+
+    }catch(erro){
+        res.status(400)
+        res.send(
+            JSON.stringify({
+                mensagem: erro.message
+            })
+        )
+    }
+})
+
 module.exports = roteador;

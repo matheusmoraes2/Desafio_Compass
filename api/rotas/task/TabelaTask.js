@@ -1,7 +1,7 @@
 const Modelo = require('./ModeloTabelaTask');
 
 module.exports = {
-    inserir() {
+    inserir(task) {
         return Modelo.create(task)
     }
 }

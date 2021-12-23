@@ -10,6 +10,7 @@ class TaskConst{
     }
 
     async criar(){
+        this.validar()
         const resultado = await TabelaTask.inserir({
             title: this.title,
             description: this.description
@@ -19,6 +20,18 @@ class TaskConst{
         this.createdAt = resultado.createdAt
         this.updatedAt = resultado.updatedAd
 
+    }
+
+    validar(){
+        const campos  = ['title', 'description']
+
+        campos.forEach(campo => {
+            const valor = this[campo]
+
+            if(typeof valor !== 'string'|| valor.length === 0){
+                throw new Error (`O campo '${campo}' está inválido`)
+            }
+        })
     }
 
 }

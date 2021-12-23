@@ -24,4 +24,12 @@ roteador.post('/', async (req,res) => {
 
 })
 
+roteador.get('/' ,async (req , res) => {
+    const resultados = await TabelaTask.listar()
+    res.status(200)
+    res.send(
+        JSON.stringify(resultados)
+    );
+})
+
 module.exports = roteador;

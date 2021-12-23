@@ -1,0 +1,12 @@
+{
+    "mysql": {
+        "banco-de-dados": "task",
+        "usuario": "root",
+        "senha": "root",
+        "host": "127.0.0.1"
+    },
+
+    "api": {
+        "port": 3000
+    }
+}

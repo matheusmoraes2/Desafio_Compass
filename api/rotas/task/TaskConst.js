@@ -22,6 +22,15 @@ class TaskConst{
 
     }
 
+    async carregar(){
+        const encontrado = await TabelaTask.pegarPorId(this.id)
+        this.title = encontrado.title
+        this.description = encontrado.description
+        this.createdAt = encontrado.createdAt
+        this.updatedAt = encontrado.updatedAd
+
+    }
+
     validar(){
         const campos  = ['title', 'description']
 

@@ -32,4 +32,23 @@ roteador.get('/' ,async (req , res) => {
     );
 })
 
+roteador.get('/:idTask', async (req, res) =>{
+    try{
+        const id = req.params.idTask
+        const task = new TaskConst({id: id})
+        await task.carregar()
+        res.status(200)
+        res.send(
+            JSON.stringify(task)
+        )
+    }catch(erro){
+        res.status(404)
+        res.send(
+            JSON.stringify({
+                mensagem: erro.message
+            })
+        )
+    }
+})
+
 module.exports = roteador;

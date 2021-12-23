@@ -72,4 +72,22 @@ roteador.put('/:idTask', async (req,res) => {
     }
 })
 
+roteador.delete('/:idTask', async (req, res) =>{
+    try{
+        const id = req.params.idTask
+        const task = new TaskConst({id:id})
+        await task.carregar()
+        await task.remover()
+        res.status(204)
+        res.end()
+        }catch(erro){
+            res.status(404)
+            res.send(
+                JSON.stringify({
+                    mensagem: erro.message
+                })
+            )
+        }
+
+})
 module.exports = roteador;

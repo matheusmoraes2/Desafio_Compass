@@ -51,6 +51,10 @@ class TaskConst{
         await TabelaTask.atualizar(this.id, dadosParaAtualizar)
     }
 
+    async remover(){
+        TabelaTask.remover(this.id)
+    }
+
     validar(){
         const campos  = ['title', 'description']
 

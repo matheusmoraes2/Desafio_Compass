@@ -1,4 +1,4 @@
-const roteador = require('express').Router();
+const roteador = require('express').Router({mergeParams: true});
 const TabelaTask = require('./TabelaTask');
 const TaskConst = require('./TaskConst');
 
@@ -20,7 +20,7 @@ roteador.post('/', async (req,res,proximo) => {
 })
 
 roteador.get('/' ,async (req , res) => {
-    const resultados = await TabelaTask.listar()
+    const resultados = await TabelaTask.listar() 
     res.status(200)
     res.send(
         JSON.stringify(resultados)
@@ -70,4 +70,8 @@ roteador.delete('/:idTask', async (req, res, proximo) =>{
         }
 
 })
+
+const roteadorSubTasks = require('./subTasks')
+roteador.use('/:idTask/subtasks', roteadorSubTasks)
+
 module.exports = roteador;

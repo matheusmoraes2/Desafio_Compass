@@ -1,4 +1,6 @@
 const TabelaTask = require('./TabelaTask');
+const CampoInvalido = require('../../erros/CampoInvalido')
+const DadosNaoFornecidos = require('../../erros/DadosNaoFornecidos')
 
 class TaskConst{
     constructor({id, title, description, createdAt, updatedAt}){
@@ -44,7 +46,7 @@ class TaskConst{
         })
 
         if (Object.keys(dadosParaAtualizar).length === 0){
-            throw new Error ('Não foram fornecidos dados para atualizar!')
+            throw new DadosNaoFornecidos()
 
         } 
 
@@ -62,7 +64,7 @@ class TaskConst{
             const valor = this[campo]
 
             if(typeof valor !== 'string'|| valor.length === 0){
-                throw new Error (`O campo '${campo}' está inválido`)
+                throw new CampoInvalido();
             }
         })
     }

@@ -2,7 +2,7 @@ const roteador = require('express').Router();
 const TabelaTask = require('./TabelaTask');
 const TaskConst = require('./TaskConst');
 
-roteador.post('/', async (req,res) => {
+roteador.post('/', async (req,res,proximo) => {
     
     try{
 
@@ -14,12 +14,7 @@ roteador.post('/', async (req,res) => {
             JSON.stringify(task) 
         )
     }catch(erro){
-        res.status(400)
-        res.send(
-            JSON.stringify({
-                mensagem: erro.message
-            })
-        )
+        proximo(erro)
     }
 
 })
@@ -32,7 +27,7 @@ roteador.get('/' ,async (req , res) => {
     );
 })
 
-roteador.get('/:idTask', async (req, res) =>{
+roteador.get('/:idTask', async (req, res,proximo) =>{
     try{
         const id = req.params.idTask
         const task = new TaskConst({id: id})
@@ -42,16 +37,11 @@ roteador.get('/:idTask', async (req, res) =>{
             JSON.stringify(task)
         )
     }catch(erro){
-        res.status(404)
-        res.send(
-            JSON.stringify({
-                mensagem: erro.message
-            })
-        )
+        proximo(erro)
     }
 })
 
-roteador.put('/:idTask', async (req,res) => {
+roteador.put('/:idTask', async (req,res, proximo) => {
 
     try{
         const id = req.params.idTask;
@@ -63,16 +53,11 @@ roteador.put('/:idTask', async (req,res) => {
     res.end()
 
     }catch(erro){
-        res.status(400)
-        res.send(
-            JSON.stringify({
-                mensagem: erro.message
-            })
-        )
+        proximo(erro)
     }
 })
 
-roteador.delete('/:idTask', async (req, res) =>{
+roteador.delete('/:idTask', async (req, res, proximo) =>{
     try{
         const id = req.params.idTask
         const task = new TaskConst({id:id})
@@ -81,12 +66,7 @@ roteador.delete('/:idTask', async (req, res) =>{
         res.status(204)
         res.end()
         }catch(erro){
-            res.status(404)
-            res.send(
-                JSON.stringify({
-                    mensagem: erro.message
-                })
-            )
+            proximo(erro)
         }
 
 })

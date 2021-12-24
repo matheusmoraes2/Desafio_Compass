@@ -29,7 +29,7 @@ app.use((req, res, proximo) => {
 })
 
 const roteador = require('./rotas/task')
-app.use('/api/task', roteador);
+app.use('/api/project', roteador);
 
 app.use((erro, req, res, proximo) => {
     let status = 500

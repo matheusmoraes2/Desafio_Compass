@@ -85,6 +85,6 @@ const verificarTask = async (req, res, proximo) =>{
     }
 }
 
-roteador.use('/:idTask/subtasks' , verificarTask, roteadorSubTasks)
+roteador.use('/:idTask/task' , verificarTask, roteadorSubTasks)
 
 module.exports = roteador;

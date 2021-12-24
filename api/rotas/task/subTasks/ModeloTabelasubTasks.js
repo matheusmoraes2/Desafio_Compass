@@ -14,7 +14,7 @@ const colunas = {
         type: Sequelize.BOOLEAN,
         allowNull: false
     },
-    Idtask:{
+    idEstr:{
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

@@ -26,8 +26,8 @@ module.exports = {
             dadosParaAtualizar,
             {
                 where : {id:id}
-            }
-        )
+            })
+        
     },
     remover(id){
         return Modelo.destroy({

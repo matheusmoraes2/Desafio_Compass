@@ -1,13 +1,21 @@
 const Modelo = require('./ModeloTabelasubTasks')
 
 module.exports = {
-    inserir(subtask) {
-        return Modelo.create(subtask)
+    inserir(dados) {
+        return Modelo.create(dados)
     },
     listar(IdConstTask){
         return Modelo.findAll({
             where: { 
-                Idtask: IdConstTask
+                idEstr: IdConstTask
+            }
+        })
+    },
+    remover(idTask, idSubtasks) {
+        return Modelo.destroy({
+            where: {
+                id: idSubtasks,
+                idEstr: idTask
             }
         })
     }

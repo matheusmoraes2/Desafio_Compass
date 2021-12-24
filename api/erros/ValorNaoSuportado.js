@@ -6,4 +6,4 @@ class ValorNaoSuportado extends Error{
     }
 }
 
-module.esxports = ValorNaoSuportado
+module.exports = ValorNaoSuportado

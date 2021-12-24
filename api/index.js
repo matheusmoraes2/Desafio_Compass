@@ -5,7 +5,7 @@ const config = require('config');
 const NaoEncontrado = require('./erros/NaoEncontrado')
 const CampoInvalido = require('./erros/CampoInvalido')
 const DadosNaoFornecidos = require('./erros/DadosNaoFornecidos')
-const valorNaoSuportado = require('./erros/ValorNaoSuportado')
+const ValorNaoSuportado = require('./erros/ValorNaoSuportado')
 const formatosAceitos = require('./Serializador').formatosAceitos
 
 app.use(bodyParser.json());

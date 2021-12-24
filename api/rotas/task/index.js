@@ -49,7 +49,7 @@ roteador.put('/:idTask', async (req,res, proximo) => {
     const dados = Object.assign({}, dadosRecebidos, {id: id})
     const task = new TaskConst(dados)
     await task.atualizar()
-    res.status(204)
+    res.status(200)
     res.end()
 
     }catch(erro){

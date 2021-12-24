@@ -64,7 +64,7 @@ class TaskConst{
             const valor = this[campo]
 
             if(typeof valor !== 'string'|| valor.length === 0){
-                throw new CampoInvalido();
+                throw new CampoInvalido(campo);
             }
         })
     }

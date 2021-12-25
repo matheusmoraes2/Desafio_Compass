@@ -40,7 +40,7 @@ node .\api\banco-de-dados\criarTabelas.js
 **Execute a aplicação usando:** 
 
 ```
-npm start
+node ./api/index.js
 ```
 
 ### Rotas do projeto 

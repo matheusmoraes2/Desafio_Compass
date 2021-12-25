@@ -11,12 +11,20 @@ module.exports = {
             }
         })
     },
-    remover(idTask, idSubtasks) {
+    remover(idSubtasks, idTask) {
         return Modelo.destroy({
             where: {
                 id: idSubtasks,
                 idEstr: idTask
             }
         })
+    },
+    atualizar(dadosDaSub, dadosParaAtt){
+        return Modelo.update(
+            dadosParaAtt,
+            {
+                where: dadosDaSub
+            }
+        )
     }
 }

@@ -23,6 +23,31 @@ class SubTask{
         }
     }
 
+    atualizar(){
+        const dadosParaAtt = {}
+
+        if(typeof this.title === 'string' && this.title.length > 0){
+            dadosParaAtt.title = this.title
+        }
+        if(typeof this.taskRelevance === 'number' ){
+            dadosParaAtt.taskRelevance = this.taskRelevance
+        }
+        if(typeof this.completed === 'boolean' ){
+            dadosParaAtt.completed = this.completed
+        }
+        if(Object.keys(dadosParaAtt).length === 0){
+            throw new Error('Não foram fornecido dados para atualizar')
+
+        }
+        return Tabela.atualizar(
+            {
+                id: this.id,
+                idEstr: this.idEstr
+            },
+            dadosParaAtt
+        )
+    }
+
     
 
     async criar(){

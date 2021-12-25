@@ -41,4 +41,22 @@ roteador.delete('/:id' , async (req, res) => {
 
 })
 
+roteador.put('/:id' , async (req ,res, proximo) => {
+    try{
+        const dados =Object.assign({} , req.body, {
+            id: req.params.id,
+            idEstr: req.task.id
+        })
+    
+        const subtask = new Sub(dados)
+        await subtask.atualizar()
+        res.status(204)
+        res.end()
+
+    }catch(erro){
+        proximo(erro)
+    }
+
+})
+
 module.exports = roteador

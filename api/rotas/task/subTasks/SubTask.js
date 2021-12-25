@@ -1,4 +1,5 @@
 const Tabela = require('./TabelaSubTasks')
+const CampoInvalido = require('../../../erros/CampoInvalido')
 
 class SubTask{
     constructor({id,title,taskRelevance,completed,idEstr,createdAt,updatedAt}){
@@ -13,13 +14,16 @@ class SubTask{
 
     validar(){
         if(typeof this.title !== 'string' || this.title.length === 0){
-            throw new Error ('O campo title está inválido')
+            const campo = 'title'
+            throw new CampoInvalido(campo)
         }
         if(typeof this.taskRelevance !== 'number'){
-            throw new Error('O campo taskRelevance está inválido')
+            const campo = 'taskRelevance'
+            throw new CampoInvalido(campo)
         }
         if(typeof this.completed !== 'boolean'){
-            throw new Error('O campo completed está inválido')
+            const campo = 'completed'
+            throw new CampoInvalido(campo)
         }
     }
 
